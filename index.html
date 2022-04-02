@@ -1,0 +1,45 @@
+ <html>
+     <head>
+        <script type="text/javascript" src="./sequence.json.js"></script>
+         <script src="./script.js"></script>
+         <link rel="stylesheet" href="./styles.css"></link>
+
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"> 
+
+         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/scrollbooster@3.0.2/dist/scrollbooster.min.js"></script>
+     </head>
+     <body onload="redraw()">
+         <div id="content"></div>
+         <div id="controls">
+            <label for="sequence">Enter Sequence<wbr> (LOW -> HIGH)</label>
+            <div id="search">
+                <input value="OOPGPBY" 
+                       onfocus="this.value=''; this.onfocus = null" 
+                       id="sequence" 
+                       spellcheck="false" 
+                       type="text" 
+                       size="20" 
+                       maxlength="20" 
+                       oninput="this.value = this.value.replace(/([^ROYGBP]+)/gi, ''); debounce(() => onSequenceChange(), 500).call()"/>
+                <button class="button back" onclick="onPrev()"><span>➧</span></button>
+                <button class="button next" onclick="onNext()"><span>➧</span></button>  
+            </div>       
+         <div id="errorText" hidden>SEQUECE NOT FOUND</div>          
+         <div id="info">
+            <label for="sequenceNo">SEQUENCE NO.</label><input id="sequenceNo" size="5" readonly></input>
+            <label for="hexValue">VALUE @ 0x31A5D50</label><input id="hexValue" size="8" readonly></input>
+            <label for="menuTime">APPROX MENU TIME</label><input id="menuTime" size="5" readonly></input>
+         </div>             
+         </div>
+         <div class="alpha-warning">
+            WARNING - ALPHA VERSION
+            <ul>
+                <li>Does NOT work for vs mode</li>
+                <li>Sequence missing 10 gems... somewhere...</li>
+                <li>Time estimate very inaccurate</li>
+            </ul>
+         </div>
+     </body>
+ </html>

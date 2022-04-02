@@ -1,0 +1,180 @@
+ [data-colour="r"] {
+    --gem-image: url("./res/red.webp");
+ }
+ [data-colour="o"] {
+    --gem-image: url("./res/orange.webp");
+ }
+[data-colour="y"] {
+    --gem-image: url("./res/yellow.webp");
+}
+[data-colour="g"] {
+    --gem-image: url("./res/green.webp");
+}
+[data-colour="b"] {
+    --gem-image: url("./res/blue.webp");
+}
+[data-colour="p"] {
+    --gem-image: url("./res/purple.webp");
+}
+[data-colour] {
+    width: 32px;
+    height: 32px;
+    margin-right: 1.5em;
+}
+#content [data-colour]:nth-child(odd)  {
+   background-image: var(--gem-image), url("./res/tile1.webp") /* contain center*/ ;
+   background-size: contain;
+}
+#content [data-colour]:nth-child(even)  {
+   background-image: var(--gem-image), url("./res/tile2.webp") /*contain center */;
+   background-size: contain;
+}
+#content :not([data-colour="blank"]):nth-child(3n+3)  {
+   border: 4px groove #1C6EA4;
+   border-top:0;
+   margin-top: -5px;
+   box-shadow: 0px 1px 0px 1px #93c0cd, 0px 3px 0px 3px #1c6ea4;
+}
+#content :not([data-colour="blank"]):nth-child(3n+2)  {
+   border-left: 4px groove #1C6EA4;
+   border-right: 4px groove #1C6EA4;
+   box-shadow: 1px 0px 0px 0px #93c0cd, 3px 0px 0px 0px #1c6ea4, -1px 0px 0px 0px #93c0cd, -3px 0px 0px 0px #1c6ea4;
+}
+#content :not([data-colour="blank"]):nth-child(3n+1)  {
+   border: 4px groove #1C6EA4;
+   box-shadow: 0px -1px 0px 1px #93c0cd, 0px -1px 0px 3px #1c6ea4;
+   border-bottom:0;
+}
+#content {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr) 1.4fr repeat(2, 1fr) 1.4fr repeat(2, 1fr) 1.4fr repeat(2, 1fr) 1.4fr;
+    grid-auto-flow: column;
+    direction: rtl;
+    width: fit-content;
+    cursor: grab;
+}
+#controls {
+   color:white;
+   font-family: 'VT323', monospace;
+   min-height: 12em;
+   width: 50vw;
+   border: 4px groove #1C6EA4;
+   box-shadow: 0px 0px 0px 1px #93c0cd, 0px 0px 0px 3px #1c6ea4;
+   background: #3c2a1cad;
+   margin-left: 0.5em;
+   display: flex;
+   padding:0.5em;
+   flex-direction: column;
+   gap: 0.5em;
+}
+#controls label {
+   font-size: xx-large;
+   white-space: nowrap;
+}
+input {
+   border-radius: 5px;
+}
+#info {
+   align-self: flex-start;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   align-self: flex-end;
+   margin-top: 2em;
+}
+#info label {
+   font-size: larger;
+   margin-right: 1em;
+}
+#info input {
+   outline: none !important;
+   font-family: 'VT323', monospace;
+   font-size: medium;
+   color: yellow;
+   background: transparent;
+   padding-left: 0.5em;
+}
+#sequence {
+   text-transform:uppercase;
+   line-height: 1.5em;
+   font-size: x-large;
+   font-family: 'VT323', monospace;
+   background: rgb(255 255 255 / 40%);
+   color: #2c2c2c;
+   padding-left: 0.5em;
+   flex-grow:1;
+   margin-right: 0.5em;
+   border: none;
+}
+#errorText {
+   align-self: end;
+   color: #ff8f8f;
+   height: 0;
+}
+#search {
+   width:100%;
+   display: flex;
+}
+.button {
+   font-size: x-large;
+   background: rgb(255 255 255 / 40%);
+   border-radius: 0px 5px 5px 0px ;
+   color: #2c2c2c;
+   border: none;
+   position: relative;
+   overflow: hidden;
+   line-height: 1.5em;
+}
+.button span {
+   display: block;
+}
+.button.back {
+   transform: scaleX(-1);
+}
+.button:after {
+   content: "";
+   background: white;
+   display: block;
+   position: absolute;
+   border-radius:50%;
+   padding-top: 300%;
+   padding-left: 350%;
+   margin-left: -20px!important;
+   margin-top: -250%;
+   opacity: 0;
+   transition: all 0.8s
+ }
+.button:active:after {
+   padding: 0;
+   margin: 0;
+   opacity: 1;
+   transition: 0s
+}
+.alpha-warning {
+   position: fixed;
+    bottom: 2em;
+    right: 2em;
+    color: red;
+    background: #ffffff54;
+    border-radius: 5px;
+    padding: 1em;
+}
+body {
+   background-color: #0d3550;
+   background: url('./res/background.webp');
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   overflow: hidden;
+}
+[data-active] {
+   animation: pulse 1s linear infinite alternate;
+   z-index: 2;
+}
+@keyframes pulse {
+   0%, 100% {
+     outline: 4px groove red;
+   }
+   50% {
+      outline: 6px groove white;
+   }
+ }
