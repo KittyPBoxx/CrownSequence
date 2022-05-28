@@ -72,3 +72,73 @@ body {
       transform: rotateY(360deg);
     }
 }
+
+.floating { 
+    animation-name: floating;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+ 
+@keyframes floating {
+    0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-4px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+:root {
+    --gem-r: #B71C1C;
+    --gem-o: #FF6E40;
+    --gem-y: #cfb649;
+    --gem-g: #2E7D32;
+    --gem-b: #1565C0;
+    --gem-p: #4527A0;
+    --gem-a: #4E342E;
+}
+  
+[data-gem] { 
+    position: relative; 
+}
+[data-gem]::after { 
+    color:white; 
+    border-radius: 50%; 
+    width: 1.2em; 
+    height: 1.2em; 
+    line-height: 1.2em; 
+    font-size: small; 
+    position: absolute; 
+    top:-0.5em;
+    font-weight: 900;
+    margin-left: 0.4em;
+}
+[data-gem='A']::after { content:'A'; background: var(--gem-a); }
+[data-gem='B']::after { content:'B'; background: var(--gem-y); }
+[data-gem='C']::after { content:'C'; background: var(--gem-g); }
+[data-gem='D']::after { content:'D'; background: var(--gem-y); }
+[data-gem='E']::after { content:'E'; background: var(--gem-p); }
+[data-gem='F']::after { content:'F'; background: var(--gem-b); }
+[data-gem='G']::after { content:'G'; background: var(--gem-o); }
+[data-gem='I']::after { content:'I'; background: var(--gem-o); }
+[data-gem='J']::after { content:'J'; background: var(--gem-r); }
+[data-gem='L']::after { content:'L'; background: var(--gem-g); }
+[data-gem='M']::after { content:'M'; background: var(--gem-g); }
+[data-gem='N']::after { content:'N'; background: var(--gem-r); }
+[data-gem='O']::after { content:'O'; background: var(--gem-g); }
+[data-gem='P']::after { content:'P'; background: var(--gem-r); }
+[data-gem='Q']::after { content:'Q'; background: var(--gem-p); }
+[data-gem='R']::after { content:'R'; background: var(--gem-p); }
+[data-gem='S']::after { content:'S'; background: var(--gem-b); }
+[data-gem='T']::after { content:'T'; background: var(--gem-y); }
+[data-gem='U']::after { content:'U'; background: var(--gem-b); }
+[data-gem='V']::after { content:'V'; background: var(--gem-p); }
+[data-gem='W']::after { content:'W'; background: var(--gem-b); }
+[data-gem='X']::after { content:'X'; background: var(--gem-r); }
+[data-gem='Y']::after { content:'Y'; background: var(--gem-y); }
+[data-gem='Z']::after { content:'Z'; background: var(--gem-o); }
+[data-gem='?']::after { content:'?'; background: var(--gem-o); }
