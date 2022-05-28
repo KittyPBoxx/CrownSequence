@@ -1,3 +1,12 @@
+:root {
+    --gem-r: #B71C1C;
+    --gem-o: #E8744F;
+    --gem-y: #cfb649;
+    --gem-g: #2E7D32;
+    --gem-b: #1565C0;
+    --gem-p: #4527A0;
+    --gem-a: #4E342E;
+}
 body {
     background-color: #0d3550;
     background: url('./res/background.webp');
@@ -20,6 +29,7 @@ body {
     text-align: center;
     padding: 0.4em;
     width: 9em;
+    position: relative;
 }
 .tab-content tr {
     line-height: 0.4em;
@@ -44,6 +54,8 @@ body {
     padding: 1em;
     font-family: 'VT323', monospace;
     font-size: x-large;
+    display: flex;
+    align-items: center;
 }
 .target .title {
     font-size: xx-large;
@@ -51,6 +63,23 @@ body {
 .target p {
     margin: 0;
     text-align: center;
+}
+.target-text {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    min-width: 16em;
+}
+.target-text-title {
+    font-size: xxx-large;
+    display: flex;
+}
+.target-text-desc {
+    display: flex;
+}
+.gem-count {
+    padding-top: 0.6em;
+    transform: scale(0.8);
 }
 
 [type="checkbox"]:checked+span:not(.lever):before {
@@ -78,6 +107,7 @@ body {
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
+    display: flex;
 }
  
 @keyframes floating {
@@ -92,16 +122,44 @@ body {
 	}
 }
 
-:root {
-    --gem-r: #B71C1C;
-    --gem-o: #FF6E40;
-    --gem-y: #cfb649;
-    --gem-g: #2E7D32;
-    --gem-b: #1565C0;
-    --gem-p: #4527A0;
-    --gem-a: #4E342E;
+
+.arrow-box {
+    position: absolute;
+    width: 1.5em;
+    height: 1.5em;
+    background: #f5ea89;
+    top: -0.5em;
+    left: 1em;
+    opacity: 0;
+    transition: all 0.2s;
+    border-radius: 0.3em;
 }
-  
+.arrow-box[data-priority] {
+    opacity: 0.5;
+}
+.arrow-box::before {
+    content: attr(data-priority);
+    position: absolute;
+    z-index: 2;
+    right: 0.4em;
+    top: 0.45em;
+    font-weight: 900;
+    width: 1em;
+    color: orangered;
+    text-shadow: 1px 1px 1px #2c1a16;
+}
+.arrow-box::after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    content: "";
+    border-top: 0.7em solid transparent;
+    border-bottom: 0.7em solid transparent;
+    border-left: 1em solid #f5ea89;
+    right: -0.5em;
+    top: 0;
+}
+
 [data-gem] { 
     position: relative; 
 }
