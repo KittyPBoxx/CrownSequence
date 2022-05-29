@@ -48,7 +48,7 @@ body {
     position: fixed;
     bottom: 2em;
     right: 2em;
-    background: #000;
+    background: #00b140;
     color: #fff;
     border-radius: 2px;
     padding: 1em;
@@ -63,12 +63,14 @@ body {
 .target p {
     margin: 0;
     text-align: center;
+    font-weight: bold;
 }
 .target-text {
     display: flex;
     flex-direction: column;
     align-content: flex-end;
     min-width: 16em;
+    min-height: 4.5em;
 }
 .target-text-title {
     font-size: xxx-large;
@@ -79,7 +81,7 @@ body {
 }
 .gem-count {
     padding-top: 0.6em;
-    transform: scale(0.8);
+    transform: scale(0.9);
 }
 
 [type="checkbox"]:checked+span:not(.lever):before {
@@ -93,7 +95,7 @@ body {
 
 
 .changing {
-    animation: rotation 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    animation: rotation 1s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.2s;
     animation-fill-mode: forwards;
 }
 @keyframes rotation {

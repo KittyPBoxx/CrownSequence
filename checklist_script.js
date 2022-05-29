@@ -9,6 +9,9 @@ function init() {
     populateAlchemistData();
     populateSorcererData();
     updateTarget();
+
+    disintegrate.init();
+    disintegrate.init();
 }
 
 function onCheckboxClick(cb) {
@@ -31,8 +34,8 @@ function updateTarget() {
         countElmnt.setAttribute("data-gemCount", newGemCount);
         countElmnt.classList.remove("changing");
         countElmnt.classList.add("changing")
-        setTimeout(function(){ countElmnt.innerHTML = newGemCount + "/80"; }, 200);
-        setTimeout(function(){ countElmnt.classList.remove("changing");}, 1000);
+        setTimeout(function(){ countElmnt.innerHTML = newGemCount + "/80"; }, 400);
+        setTimeout(function(){ countElmnt.classList.remove("changing");}, 1200);
     }
 }
 
@@ -62,6 +65,7 @@ function toggleTargetAndRefresh(e) {
     updateTargetText();
 }
 
+let lastId;
 function updateTargetText() {
     let target = Array.prototype.slice.call(document.querySelectorAll("[data-priority]"),0)
                                       .sort((a,b) => parseInt(a.getAttribute("data-priority")) > parseInt(b.getAttribute("data-priority")) ? 1 : -1)
@@ -70,12 +74,24 @@ function updateTargetText() {
 
     let targetTextTitle = document.querySelector(".target-text-title");
     let targetTextDesc = document.querySelector(".target-text-desc");
+
+    
     
     if (target) {
         let infoHolder = target.parentElement.querySelector("[data-gem-name");
+
+        if (lastId !== infoHolder.id) {
+            disintegrate.createSimultaneousParticles(disintegrate.getDisObj(document.querySelector(".target-text")));
+            lastId = infoHolder.id;
+        }
+
         targetTextTitle.innerHTML = "Next: " + infoHolder.getAttribute("data-gem-name");
         targetTextDesc.innerHTML = infoHolder.getAttribute("data-gem-req");
     } else {
+        if (lastId) {
+            disintegrate.createSimultaneousParticles(disintegrate.getDisObj(document.querySelector(".target-text")));
+            lastId = null;
+        }
         targetTextTitle.innerHTML = "Next: -";
         targetTextDesc.innerHTML = "";
     }

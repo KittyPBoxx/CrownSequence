@@ -1,5 +1,9 @@
 <html>
     <head>
+        <!-- Disintegrate Library -->
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script defer src="disintegrate.js"></script>
+
         <script src="./checklist_script.js"></script>
         <link rel="stylesheet" href="./checklist_styles.css"></link>
 
@@ -390,7 +394,7 @@
         </div>           
         <div id="target" class="target">
             <div class="floating">
-                <span class="target-text"><p class="target-text-title">Next: -</p><p class="target-text-desc"></p></span>
+                <span class="target-text" data-dis-type="simultaneous" data-dis-reduction-factor="100"><p class="target-text-title">Next: -</p><p class="target-text-desc"></p></span>
                 <span class="gem-count"><p class="title">GEMS</p><p data-gemCount="0" id="count" class="count">0/80</p></span>
             </div>
         </div>
