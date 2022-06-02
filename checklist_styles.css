@@ -45,6 +45,7 @@ body {
 }
 .carousel.carousel-slider .carousel-item p {
     font-size: 1em !important;
+    margin: 0;
  }
 .controls {
     position: fixed;
@@ -174,6 +175,7 @@ body {
     opacity: 0;
     transition: all 0.2s;
     border-radius: 0.3em;
+    margin-top: 0.9em !important;
 }
 .arrow-box[data-priority] {
     opacity: 0.5;

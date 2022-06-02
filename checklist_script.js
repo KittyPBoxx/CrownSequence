@@ -135,7 +135,7 @@ function undo() {
     if (!nextTarget) {
         target = targetsList[targetsList.length - 1].parentElement.querySelector("input[type='checkbox']");
     } else if (targetsList.length >= 2) {
-        target = targetsList[targetsList.indexOf(nextTarget) - 1].parentElement.querySelector("input[type='checkbox']");     
+        target = targetsList[Math.max(targetsList.indexOf(nextTarget) - 1,0)].parentElement.querySelector("input[type='checkbox']");     
     }
 
     if (target) {
@@ -144,6 +144,13 @@ function undo() {
         updateTargetText();
     }
 }
+
+gameControl.on('connect', gamepad => { 
+    M.toast({html: 'Gamepad Connected'});
+    gamepad.before('r1', () => { nextTargetTrigger(true); });
+    gamepad.before('l1', () => { nextTargetTrigger(false); });
+    gamepad.before('l2', () => { undo(); })
+});
 
 
 function populateAlchemistData() {
