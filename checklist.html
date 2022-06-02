@@ -394,9 +394,16 @@
         </div>           
         <div id="target" class="target">
             <div class="floating">
-                <span class="target-text" data-dis-type="simultaneous" data-dis-reduction-factor="100"><p class="target-text-title">Next: -</p><p class="target-text-desc"></p></span>
+                <span class="target-text" data-dis-type="simultaneous"  data-dis-reduction-factor="100"><p class="target-text-title">Next: -</p><p class="target-text-desc"></p></span>
                 <span class="gem-count"><p class="title">GEMS</p><p data-gemCount="0" id="count" class="count">0/80</p></span>
             </div>
+        </div>
+        <div id="controls" class="controls">
+            <span class="control-button control-right-click">Right Click - Select As Target</span>
+            <span class="control-button control-got-gem"><button class="btn waves-effect waves-light red" onclick="nextTargetTrigger(true)">R1</button> - Got Target</span>
+            <span class="control-button control-missed-gem"><button class="btn waves-effect waves-light red" onclick="nextTargetTrigger(false)">L1</button> - Missed Target</span>
+            <span class="control-button control-undo"><button class="btn waves-effect waves-light red" onclick="undo()">L2</button> - Undo</span>
+            <span class="toggle-hide" onclick="toggleHideParent(this)">↓</span>
         </div>
     </body>
 </html>

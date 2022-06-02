@@ -97,12 +97,53 @@ function updateTargetText() {
     }
 }
 
-/*
+function toggleHideParent(elmnt) {
+    let isHidden = elmnt.parentElement.getAttribute("offscreen");
+    if (isHidden) {
+        elmnt.parentElement.removeAttribute("offscreen");
+    } else {
+        elmnt.parentElement.setAttribute("offscreen",true)
+    }
+}
 
-Map stores and id and the state (checked / missed / empty)
-It goes through the map and updates all the checkbox states to match the map
+function nextTargetTrigger(got) {
+    let target = Array.prototype.slice.call(document.querySelectorAll("[data-priority]"),0)
+                                      .sort((a,b) => parseInt(a.getAttribute("data-priority")) > parseInt(b.getAttribute("data-priority")) ? 1 : -1)
+                                      .map(el => el.parentElement.querySelector("input[type='checkbox']"))
+                                      .filter(e => !e.checked && !e.readOnly)[0];
 
-*/
+    if (target) {
+         if (got) {
+             target.checked = true;
+         } else {
+             target.readOnly = true;
+             target.indeterminate = true
+         }
+     
+         updateTarget();
+         updateTargetText();
+    }                                  
+}
+
+function undo() {
+    let targetsList = Array.prototype.slice.call(document.querySelectorAll("[data-priority]"),0)
+                                           .sort((a,b) => parseInt(a.getAttribute("data-priority")) > parseInt(b.getAttribute("data-priority")) ? 1 : -1);
+
+    let nextTarget = targetsList.filter(el => { let te = el.parentElement.querySelector("input[type='checkbox']"); return !te.checked && !te.readOnly})[0];
+
+    let target;                    
+    if (!nextTarget) {
+        target = targetsList[targetsList.length - 1].parentElement.querySelector("input[type='checkbox']");
+    } else if (targetsList.length >= 2) {
+        target = targetsList[targetsList.indexOf(nextTarget) - 1].parentElement.querySelector("input[type='checkbox']");     
+    }
+
+    if (target) {
+        target.readOnly=target.checked=target.indeterminate = false;
+        updateTarget();
+        updateTargetText();
+    }
+}
 
 
 function populateAlchemistData() {
